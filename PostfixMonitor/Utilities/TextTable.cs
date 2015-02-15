@@ -13,8 +13,8 @@ namespace PostfixMonitor
         public int TableWidth { get; set; }
         public int AvgColumnWidth { get; set; }
 
-        public string HorizontalLine = "\u2550";
-        public string VerticalLine = "\u2551";
+        public string HorizontalLine = "=";
+        public string VerticalLine = "|";
 
         public TextTable(int tableWidth = 79)
         {
@@ -113,7 +113,7 @@ namespace PostfixMonitor
                     }
                     else
                     {
-                        builder.Append(String.Format(" {0, -" + (CurColWidth - 2) + "}" + (i < Columns.Count - 1 ? VerticalLine : ""), Truncate(val, CurColWidth - 1)));
+                        builder.Append(String.Format(" {0, -" + (CurColWidth - 2) + "}" + (i < Columns.Count - 1 ? VerticalLine : ""), Truncate(val, CurColWidth - 2)));
                     }
 
                 }

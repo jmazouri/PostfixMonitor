@@ -8,10 +8,17 @@ namespace PostfixMonitor
 {
     public class MailLogEntry
     {
+        private string UUID { get; set; }
+        public string Date { get; set; }
         public string Source { get; set; }
         public string Target { get; set; }
 
         public string MiscInfo { get; set; }
+
+        public MailLogEntry()
+        {
+            UUID = Guid.NewGuid().ToString();
+        }
 
         public override string ToString()
         {
@@ -29,7 +36,7 @@ namespace PostfixMonitor
             if (entry != null)
             {
                 MailLogEntry asdf = entry;
-                return (asdf.Target == Target && asdf.MiscInfo == MiscInfo && asdf.Source == Source);
+                return (asdf.UUID == UUID);
 
             }
 
@@ -38,7 +45,7 @@ namespace PostfixMonitor
 
         public override int GetHashCode()
         {
-            return Source.GetHashCode() + Target.GetHashCode() + MiscInfo.GetHashCode();
+            return UUID.GetHashCode();
         }
     }
 }
